@@ -1,0 +1,113 @@
+.player_wrapper {
+    position: fixed;
+    z-index: 10;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+    background: rgba( 33, 31, 39, 0.3 );
+    box-shadow: 0 8px 32px 0 rgba( 0, 0, 0, 0.37 );
+    backdrop-filter: blur( 8px );
+    -webkit-backdrop-filter: blur( 8px );
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    display: flex;
+    align-items: center;
+}
+
+.player_input-range {
+    width: 40vw;
+    height: 5px;
+    -webkit-appearance: none;
+    margin: 10px 20px;
+}
+
+.player_input-range:focus {
+    outline: none;
+}
+.player_input-range::-webkit-slider-runnable-track {
+    height: 5px;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 0px 0px 0px #000000;
+    background: #fff;
+    border-radius: 1px;
+    border: 0px solid #000000;
+}
+
+.player_input-range::-webkit-slider-thumb {
+    box-shadow: 1px 1px 3px #222222;
+    border: 0px solid #2497E3;
+    height: 18px;
+    width: 18px;
+    border-radius: 25px;
+    background: #EAEAEA;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -6.5px;
+}
+
+.player_input-range:focus::-webkit-slider-runnable-track {
+    background: #fff;
+}
+
+.player_input-range::-moz-range-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 0px 0px 0px #000000;
+    background: #fff;
+    border-radius: 1px;
+    border: 0px solid #000000;
+}
+
+.player_input-range::-moz-range-thumb {
+    box-shadow: 1px 1px 3px #222222;
+    border: 0px solid #2497E3;
+    height: 18px;
+    width: 18px;
+    border-radius: 25px;
+    background: #EAEAEA;
+    cursor: pointer;
+}
+
+.player_input-range::-ms-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+
+.player_input-range::-ms-fill-lower,
+.player_input-range::-ms-fill-upper {
+    background: #fff;
+    border: 0px solid #000000;
+    border-radius: 2px;
+    box-shadow: 0px 0px 0px #000000;
+}
+
+.player_input-range::-ms-fill-upper::-ms-thumb {
+    margin-top: 1px;
+    box-shadow: 1px 1px 3px #222222;
+    border: 0px solid #2497E3;
+    height: 18px;
+    width: 18px;
+    border-radius: 25px;
+    background: #EAEAEA;
+    cursor: pointer;
+}
+
+.player_input-range::-ms-fill-upper:focus::-ms-fill-lower,
+.player_input-range:focus::-ms-fill-upper {
+    background: #fff;
+}
+
+@media screen and (max-width: 800px) {
+    .player_input-range {
+        width: 25vw;
+    }
+}

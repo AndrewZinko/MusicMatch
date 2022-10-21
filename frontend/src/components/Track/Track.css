@@ -1,0 +1,66 @@
+.track_wrapper {
+    margin-top: 15px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.track_info {
+    display: flex;
+    align-items: center;
+}
+
+.track_number {
+    font-size: 14pt;
+    color: #b2b6b9;
+}
+
+.track_cover{
+    margin-left: 10px;
+    border-radius: 10px;
+}
+
+.track_initials {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.track_name {
+    color: #ffffff;
+    font-size: 11pt;
+    margin-bottom: 3px;
+}
+
+.track_band {
+    color: #999c9f;
+    margin: 0;
+    font-size: 10.5pt;
+}
+
+.track_time-play {
+    display: flex;
+    align-items: center;
+}
+
+.track_time-play > .JoyChip-root {
+    height: 15px !important;
+    margin-right: 10px;
+}
+
+.track_time-play_paragraph {
+    color: #ffffff !important;
+    margin: 0;
+    font-size: 10.5pt;
+}
+
+.track_time-play_iconbutton {
+    background-color: #eaeaea !important;
+    opacity: 0.8;
+}
+
+.track_time-play_iconbutton:hover {
+    opacity: 1;
+    transition: 0.3s;
+}

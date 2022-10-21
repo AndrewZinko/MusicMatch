@@ -1,0 +1,34 @@
+.background {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: -100;
+    background-size: cover;
+}
+
+.result-page_container {
+    width: 100%;
+}
+
+.result-page_heading {
+    color: #d7d1cf;
+    padding-top: 70px;
+    padding-left: 15px;
+}
+
+.wrapper {
+    margin: 0 !important;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.padding {
+    padding: 12px !important;
+}
+
+@media screen and (max-width: 800px) {
+    .wrapper {
+        grid-template-columns: 100%;
+    }
+}

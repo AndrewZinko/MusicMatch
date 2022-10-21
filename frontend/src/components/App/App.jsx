@@ -3,10 +3,13 @@ import {
   createBrowserRouter,
   RouterProvider
 } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchMusic } from "../../reducers/music";
 
 import './App.css';
 
 const MainPage = lazy(() => import("../../routes/MainPage/MainPage"));
+const ResultPage = lazy(() => import("../../routes/ResultPage/ResultPage"));
 
 const router = createBrowserRouter([
   {
@@ -15,10 +18,9 @@ const router = createBrowserRouter([
   },
   {
     path: '/search',
-    element: null,
-    loader: null
+    element: <ResultPage/>,
   }
-])
+]);
 
 const App = () => {
   return (

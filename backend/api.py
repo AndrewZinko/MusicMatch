@@ -60,3 +60,7 @@ def get_music_url(query):
             return {
                 "music_url": row_data["url"]
             }
+
+    return {
+        "music_url": search_result.results[0].streaming_data["formats"][0]["url"]
+    }
