@@ -1,0 +1,1 @@
+web gunicorn MusicMatch.wsgi:application --log-file -
