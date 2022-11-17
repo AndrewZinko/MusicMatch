@@ -38,7 +38,7 @@ const Track = ({id, number, cover, name, band, duration}) => {
             </div>
 
             <div className="track_time-play">
-                <Chip variant="plain" size="sm">
+                <Chip className="track_time-play__duration" variant="plain" size="sm">
                     {renderTrackDuration(duration)}
                 </Chip>
                 <IconButton className="track_time-play_iconbutton" 

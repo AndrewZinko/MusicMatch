@@ -14,3 +14,9 @@
 .artist-card_heading{
     color: #eaeaea;
 }
+
+@media screen and (max-width: 800px) {
+    .artist-card_wrapper {
+        padding: 15px;
+    }
+}
