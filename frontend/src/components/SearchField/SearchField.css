@@ -14,11 +14,23 @@
 }
 
 .search-container_input{
-    width: 80%;
+    width: 90%;
 }
 
 @media screen and (max-width: 800px) {
     .search-container {
+        width: 90%;
+    }
+    .search-container_input{
+        width: 80%;
+    }
+}
+
+@media screen and ((min-width: 800px) and (max-width: 1200px)) {
+    .search-container {
+        width: 85%;
+    }
+    .search-container_input{
         width: 90%;
     }
 }

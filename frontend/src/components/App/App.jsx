@@ -3,8 +3,7 @@ import {
   createBrowserRouter,
   RouterProvider
 } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchMusic } from "../../reducers/music";
+import FallbackPage from "../../routes/FallbackPage/FallbackPage";
 
 import './App.css';
 
@@ -18,13 +17,13 @@ const router = createBrowserRouter([
   },
   {
     path: '/search',
-    element: <ResultPage/>,
+    element: <ResultPage/>
   }
 ]);
 
 const App = () => {
   return (
-    <Suspense fallback={null}>
+    <Suspense fallback={<FallbackPage/>}>
       <RouterProvider router={router}/>
     </Suspense>
   );

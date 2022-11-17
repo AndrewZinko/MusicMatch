@@ -1,29 +1,28 @@
-import {useState} from 'react';
-import { useDispatch } from 'react-redux';
-import { addTrackToPlayer } from '../../reducers/player';
+import { usePlayer } from '../../hooks/player.hook';
+import { useSelector } from 'react-redux';
 
 import IconButton from '@mui/joy/IconButton';
 import Chip from '@mui/joy/Chip';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import "./Track.css"
+import "./Track.css";
 
 const Track = ({id, number, cover, name, band, duration}) => {
-    const dispatch = useDispatch();
-    const onPlayerActivate = (id, cover, name, band, duration) => {
-        const trackData = {
-            id,
-            cover,
-            name,
-            band,
-            duration
-        }
-        dispatch(addTrackToPlayer(trackData));
-    }
+    const {activatePlayer, togglePlayPause} = usePlayer();
+
+    const handleTrack = () => {
+        const playingNow = true;
+        togglePlayPause(playingNow);
+        activatePlayer(id, cover, name, band, duration);
+    } 
 
     const renderTrackDuration = (duration) => {
         const min = Math.floor(duration / 60);
         const sec = duration % 60 < 10 ? `0${duration % 60}` : duration % 60;
-        return `${min}:${sec}`;
+        return (
+            <p className="track_time-play_paragraph">
+                {min}:{sec}
+            </p>
+        );
     }
 
     return (
@@ -40,12 +39,10 @@ const Track = ({id, number, cover, name, band, duration}) => {
 
             <div className="track_time-play">
                 <Chip variant="plain" size="sm">
-                    <p className="track_time-play_paragraph">
-                        {() => renderTrackDuration(duration)}
-                    </p>
+                    {renderTrackDuration(duration)}
                 </Chip>
                 <IconButton className="track_time-play_iconbutton" 
-                    onClick={() => onPlayerActivate(id, cover, name, band, duration)}>
+                    onClick={() => handleTrack()}>
                     <PlayArrowIcon style={{"fill": "#211f27"}}/>
                 </IconButton>
             </div>

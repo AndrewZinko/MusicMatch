@@ -28,7 +28,7 @@ const SearchField = () => {
             <form onSubmit={handleSubmit(onSubmit)} className="search-container_form">
                 <TextField
                     className="search-container_input" 
-                    color="primary" 
+                    color="info" 
                     variant="plain" 
                     placeholder="Search music, based on band you like..."
                     size="lg"
@@ -36,7 +36,7 @@ const SearchField = () => {
                     endDecorator={
                         errors.band && <Chip color="danger" size="sm" variant="solid">Required</Chip>
                     }/>
-                <IconButton color="primary" variant="soft" size="lg" type="submit">
+                <IconButton color="info" variant="soft" size="lg" type="submit">
                     <SearchIcon />
                 </IconButton>
             </form>

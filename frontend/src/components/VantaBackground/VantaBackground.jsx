@@ -3,7 +3,7 @@ import NET from "vanta/dist/vanta.net.min.js";
 
 import './VantaBackground.css';
 
-const MainPage = ({type}) => {
+const VantaBackground = () => {
     const [vantaBackground, setVantaBackground] = useState(null);
     const refBackground = useRef(null);
 
@@ -14,8 +14,8 @@ const MainPage = ({type}) => {
                 mouseControls: true,
                 touchControls: true,
                 gyroControls: false,
-                color: type === "Main" ? 0x2d6889 : 0xff0057,
-                backgroundColor: type === "Main" ? 0x23153c : 0x9061b
+                color: 0x5f35ae,
+                backgroundColor: 0x101010
             }));
         }
 
@@ -26,13 +26,9 @@ const MainPage = ({type}) => {
         }
     }, [vantaBackground]);
 
-    const fixPosition = (typeOfBackground) => {
-        return typeOfBackground === "Search" ? {"position": "fixed"} : null;
-    }
-
     return (
-        <div className="vanta-background" ref={refBackground} style={fixPosition(type)}/>
+        <div className="vanta-background" ref={refBackground}/>
     );
 };
 
-export default MainPage;
+export default VantaBackground;

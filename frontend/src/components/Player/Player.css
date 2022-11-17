@@ -12,11 +12,18 @@
     border-radius: 20px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
     display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
+.player_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
 .player_input-range {
-    width: 40vw;
+    width: 20vw;
     height: 5px;
     -webkit-appearance: none;
     margin: 10px 20px;
@@ -104,10 +111,4 @@
 .player_input-range::-ms-fill-upper:focus::-ms-fill-lower,
 .player_input-range:focus::-ms-fill-upper {
     background: #fff;
-}
-
-@media screen and (max-width: 800px) {
-    .player_input-range {
-        width: 25vw;
-    }
 }

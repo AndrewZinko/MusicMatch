@@ -6,7 +6,7 @@
     align-items: center;
 }
 
-.header-wrapper > h2 {
+.header-wrapper > h2{
     color: #eaeaea;
     margin-bottom: 0;
     margin-left: 5px;
@@ -15,4 +15,9 @@
 .header-icon{
     width: 40px !important;
     height: 40px !important;
+}
+
+.header__beta-chip{
+    transform: translateY(-5px);
+    margin-left: 5px;
 }

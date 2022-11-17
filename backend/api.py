@@ -18,10 +18,14 @@ def get_similar_bands(band_name):
         group_array.pop(0)
         return group_array
     except HTTPError:
-        return []
+        return None
 
 
-def get_bands_id_from_deezer(list_of_bands):
+def get_bands_music_from_deezer(list_of_bands):
+
+    if list_of_bands == None:
+        return list_of_bands
+
     url = "https://deezerdevs-deezer.p.rapidapi.com/search"
 
     headers = {
@@ -58,9 +62,9 @@ def get_music_url(query):
     for row_data in search_result.results[0].streaming_data["formats"]:
         if row_data["audioQuality"] == 'AUDIO_QUALITY_MEDIUM' or row_data["audioQuality"] == 'AUDIO_QUALITY_HIGH':
             return {
-                "music_url": row_data["url"]
+                "musicUrl": row_data["url"]
             }
 
     return {
-        "music_url": search_result.results[0].streaming_data["formats"][0]["url"]
+        "musicUrl": search_result.results[0].streaming_data["formats"][0]["url"]
     }

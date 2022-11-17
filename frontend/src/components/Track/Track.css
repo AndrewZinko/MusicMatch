@@ -12,6 +12,7 @@
 }
 
 .track_number {
+    width: 25px;
     font-size: 14pt;
     color: #b2b6b9;
 }

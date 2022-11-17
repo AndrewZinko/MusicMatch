@@ -1,10 +1,9 @@
-import React from 'react';
 import Track from "../Track/Track";
 import "./ArtistCard.css";
 
 const ArtistCard = ({data, index}) => {
 
-    const renderTracks = (data) => {
+    const renderTracks =() => {
         return data.map((item, index) => {
             return <Track
                         key={item.id}
@@ -14,15 +13,15 @@ const ArtistCard = ({data, index}) => {
                         name={item.title}
                         band={item.artist.name}
                         duration={item.duration}
-                        p={item.preview}/>;
+                        />;
         });
     }
 
     return (
         <div className="artist-card_wrapper">
-            <h5 className="artist-card_heading">Recommendation #{index}: {data[0].artist.name}</h5>
+            <h5 className="artist-card_heading">Recommendation #{index}: {data && data[0]?.artist?.name}</h5>
             <div className="artist-card_tracklist">
-                {renderTracks(data)}
+                {renderTracks()}
             </div>
         </div>
     );

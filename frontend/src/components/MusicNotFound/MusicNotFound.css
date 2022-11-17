@@ -1,0 +1,43 @@
+.music-not-found__wrapper {
+    width: 60vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba( 33, 31, 39, 0.3 );
+    box-shadow: 0 8px 32px 0 rgba( 0, 0, 0, 0.37 );
+    backdrop-filter: blur( 8px );
+    -webkit-backdrop-filter: blur( 8px );
+    padding: 25px;
+    border-radius: 20px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.music-not-found__wrapper h3,
+.music-not-found__paragraph {
+    color: #eaeaea;
+}
+
+.music-not-found__paragraph {
+    margin: 0;
+}
+
+.music-not-found__button {
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.music-not-found__link {
+    text-decoration: none;
+}
+
+@media screen and (max-width: 800px) {
+    .music-not-found__wrapper {
+        width: 90vw;
+    }
+    .music-not-found__wrapper h3{
+        font-size: 16pt;
+    }
+}

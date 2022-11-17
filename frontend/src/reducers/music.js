@@ -1,6 +1,7 @@
 import {
     createSlice,
     createAsyncThunk,
+    createSelector
 } from "@reduxjs/toolkit";
 import { useHttp } from "../hooks/http.hook";
 
@@ -15,13 +16,14 @@ export const fetchMusic = createAsyncThunk(
 const initialState = {
     musicList: [],
     query: "",
-    musicLoadingStatus: 'idle'
+    musicLoadingStatus: 'uninit'
 };
 
 const musicSlice = createSlice({
     name: 'music',
     initialState,
     reducers: {
+        dropMusicList: (state) => {state.musicLoadingStatus = 'uninit';},
         musicAddQuery: (state, action) => {state.query = action.payload;}
     },
     extraReducers: (builder) => {
@@ -40,5 +42,6 @@ const {reducer, actions} = musicSlice;
 
 export default reducer;
 export const {
+    dropMusicList,
     musicAddQuery
 } = actions;
