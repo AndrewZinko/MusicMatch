@@ -9,7 +9,7 @@ export const fetchCurrentTrack = createAsyncThunk(
     'player/fetchCurrentTrack',
     async (data) => {
         const {request} = useHttp();
-        return await request("http://127.0.0.1:8000/musicUrl", "POST", JSON.stringify(data));
+        return await request("https://musicmatchbackend.herokuapp.com/musicUrl", "POST", JSON.stringify(data));
     }
 );
 
