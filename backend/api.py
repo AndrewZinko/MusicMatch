@@ -3,7 +3,7 @@ from pytube import Search
 from bs4 import BeautifulSoup as soup
 from urllib.request import urlopen, Request
 import urllib.parse
-from urllib.error import HTTPError
+from urllib.error import HTTPError, URLError
 
 
 def get_similar_bands(band_name):
@@ -60,6 +60,11 @@ def get_music_url(query):
     search_result = Search(query)
 
     for video in search_result.results:
-        return {
-            "musicUrl": video.streams.filter(only_audio=True).order_by("abr").desc().first().url
-        }
+        url = video.streams.filter(only_audio=True).order_by("abr").desc().first().url
+        try:
+            if (urlopen(Request(url)).code == 200):
+                return {
+                    "musicUrl": url
+                }
+        except HTTPError or URLError:
+            continue
