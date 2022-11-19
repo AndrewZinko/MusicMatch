@@ -2,6 +2,8 @@ import { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { usePlayer } from "../../hooks/player.hook";
 
+import DCMAButton from "../DCMAButton/DCMAButton";
+
 import IconButton from "@mui/joy/IconButton";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
@@ -10,7 +12,7 @@ import CircularProgress from "@mui/joy/CircularProgress";
 import "./Player.css";
 
 const Player = () => {
-    const {togglePlayPause, fetchTrackUrl} = usePlayer();
+    const {togglePlayPause, fetchTrackUrl, markTrackAsUnplayable} = usePlayer();
 
     const trackData = useSelector(state => state.player.trackData);
     const trackUrl = useSelector(state => state.player.trackUrl);
@@ -37,17 +39,22 @@ const Player = () => {
         }
     }, [trackData?.id]);
 
-    const onPlayPauseClick = () => {
+    const onPlayPauseClick = async () => {
         const prevValue = playStatus;
-        togglePlayPause(playStatus);
 
         if (!prevValue) {
-            audioPlayer.current.play();
-            animationFrame = requestAnimationFrame(whilePlaying);
+            try {
+                await audioPlayer.current.play();
+                animationFrame = requestAnimationFrame(whilePlaying);
+            } catch (e) {
+                markTrackAsUnplayable();
+            }
         } else {
             audioPlayer.current.pause();
             cancelAnimationFrame(animationFrame);
         }
+
+        togglePlayPause(playStatus);
     }
 
     const changeRange = () => {
@@ -64,8 +71,10 @@ const Player = () => {
     }
 
     const renderPlayButton = () => {
-        if (trackUrlLoadingStatus !== "idle") {
+        if (trackUrlLoadingStatus === "loading") {
             return <CircularProgress color="info" variant="plain" />
+        } else if (trackUrlLoadingStatus === "unplayable") {
+            return <DCMAButton/>;
         }
 
         return (

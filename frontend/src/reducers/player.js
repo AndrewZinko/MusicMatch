@@ -30,7 +30,8 @@ const playerSlice = createSlice({
         addTrackToPlayer: (state, action) => {
             state.trackData = action.payload;
             state.playerStatus = "idle";
-        }
+        },
+        markUrlAsUnplayable: (state) => {state.trackUrlLoadingStatus = "unplayable";}
     },
     extraReducers: builder => {
         builder
@@ -50,5 +51,6 @@ export default reducer;
 export const {
     dropPlayer,
     togglePlayStatus,
-    addTrackToPlayer
+    addTrackToPlayer,
+    markUrlAsUnplayable
 } = actions;

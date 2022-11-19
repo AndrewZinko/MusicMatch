@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { addTrackToPlayer, togglePlayStatus, fetchCurrentTrack, dropPlayer } from "../reducers/player";
+import { addTrackToPlayer, togglePlayStatus, fetchCurrentTrack, dropPlayer, markUrlAsUnplayable } from "../reducers/player";
 
 export const usePlayer = () => {
     const dispatch = useDispatch();
@@ -32,10 +32,15 @@ export const usePlayer = () => {
         dispatch(dropPlayer());
     }
 
+    const markTrackAsUnplayable = () => {
+        dispatch(markUrlAsUnplayable());
+    }
+
     return {
         activatePlayer,
         togglePlayPause,
         fetchTrackUrl,
-        dropAudioPlayer
+        dropAudioPlayer,
+        markTrackAsUnplayable
     };
 }
