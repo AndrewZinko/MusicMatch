@@ -59,12 +59,7 @@ def get_bands_music_from_deezer(list_of_bands):
 def get_music_url(query):
     search_result = Search(query)
 
-    for row_data in search_result.results[0].streaming_data["formats"]:
-        if row_data["audioQuality"] == 'AUDIO_QUALITY_MEDIUM' or row_data["audioQuality"] == 'AUDIO_QUALITY_HIGH':
-            return {
-                "musicUrl": row_data["url"]
-            }
-
-    return {
-        "musicUrl": search_result.results[0].streaming_data["formats"][0]["url"]
-    }
+    for video in search_result.results:
+        return {
+            "musicUrl": video.streams.filter(only_audio=True).order_by("abr").desc().first().url
+        }
