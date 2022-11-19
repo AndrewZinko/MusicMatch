@@ -62,9 +62,11 @@ def get_music_url(query):
     for video in search_result.results:
         url = video.streams.filter(only_audio=True).order_by("abr").desc().first().url
         try:
-            if (urlopen(Request(url)).code == 200):
+            if urlopen(Request(url)).code == 200:
                 return {
                     "musicUrl": url
                 }
+            else:
+                continue
         except HTTPError or URLError:
             continue
