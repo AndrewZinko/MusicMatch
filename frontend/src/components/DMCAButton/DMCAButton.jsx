@@ -1,12 +1,12 @@
 import Button from '@mui/joy/Button';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 
-const DCMAButton = () => {
+const DMCAButton = () => {
     return (
         <Button size="sm" endDecorator={<ErrorOutlineIcon />} color="danger" disabled={true} variant="soft">
-            DCMA
+            DMCA
         </Button>
     );
 };
 
-export default DCMAButton;
+export default DMCAButton;

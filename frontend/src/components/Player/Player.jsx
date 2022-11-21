@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { usePlayer } from "../../hooks/player.hook";
 
-import DCMAButton from "../DCMAButton/DCMAButton";
+import DMCAButton from "../DMCAButton/DMCAButton";
 
 import IconButton from "@mui/joy/IconButton";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
@@ -31,7 +31,10 @@ const Player = () => {
             if ('mediaSession' in navigator) {
                 navigator.mediaSession.metadata = new MediaMetadata({
                     title: trackData.name,
-                    artist: trackData.band
+                    artist: trackData.band,
+                    artwork: [
+                        {src: trackData.cover, sizes: "250x250", type: "image/jpeg"}
+                    ]
                 });
             }
 
@@ -74,7 +77,7 @@ const Player = () => {
         if (trackUrlLoadingStatus === "loading") {
             return <CircularProgress color="info" variant="plain" />
         } else if (trackUrlLoadingStatus === "unplayable") {
-            return <DCMAButton/>;
+            return <DMCAButton/>;
         }
 
         return (
@@ -90,13 +93,16 @@ const Player = () => {
             <div className="player_container">
                 <img className="track_cover" style={{'margin': '0'}} src={trackData?.cover} alt="Track Cover" />
                 <div className="track_initials">
-                    <p className="track_name">{trackData?.name}</p>
-                    <p className="track_band">{trackData?.band}</p>
+                    <p className="track_name">{trackData.name.length > 20 ? `${trackData.name.slice(0,20)}...` : trackData.name}</p>
+                    <p className="track_band">{trackData.band.length > 20 ? `${trackData.band.slice(0,20)}...` : trackData.band}</p>
                 </div>
             </div>
             
             <div className="player_container">
                 <input type="range" ref={progressBar} onChange={changeRange} className="player_input-range" defaultValue={0}/>
+            </div>
+
+            <div className="player_container">
                 {renderPlayButton()}
             </div>
         </div>

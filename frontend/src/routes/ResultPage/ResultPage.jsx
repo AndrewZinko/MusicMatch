@@ -1,6 +1,8 @@
-import {useMemo} from 'react';
+import {useEffect, useMemo} from 'react';
 import { CssVarsProvider } from '@mui/joy/styles';
 import { useSelector } from 'react-redux';
+import { useDispatch } from "react-redux";
+import { fetchMusic } from "../../reducers/music";
 
 import Header from '../../components/Header/Header';
 import Player from '../../components/Player/Player';
@@ -16,6 +18,16 @@ const ResultPage = () => {
     const playerStatus = useSelector(state => state.player.playerStatus);
     const musicLoadingStatus = useSelector(state => state.music.musicLoadingStatus);
 
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const data = {
+            query: bandName ? bandName : localStorage.getItem("band")
+        };
+
+        dispatch(fetchMusic(data));
+    }, []);
+
     const renderWrapper = useMemo(() => {
         return window.innerWidth < 800 ? <OneRow/> : <TwoRows/>;
     }, []);
@@ -28,6 +40,10 @@ const ResultPage = () => {
         );
     }, []);
 
+    const displayBandName = (name) => {
+        return `${name[0].toUpperCase()}${name.slice(1)}`
+    }
+
     return (
         <CssVarsProvider>
             <div className="background" style={{"backgroundImage": `url(${background})`}}></div>
@@ -35,7 +51,7 @@ const ResultPage = () => {
                 <Header/>
 
                 <h5 className="result-page_heading">
-                    Search result on {bandName && `${bandName[0].toUpperCase()}${bandName.slice(1)}`}:
+                    Search result on {bandName ? displayBandName(bandName) : displayBandName(localStorage.getItem("band"))}:
                 </h5>
 
                 {musicLoadingStatus === 'idle' ? renderWrapper : renderSpinner}

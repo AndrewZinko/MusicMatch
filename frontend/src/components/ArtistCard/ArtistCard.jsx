@@ -9,7 +9,7 @@ const ArtistCard = ({data, index}) => {
                         key={item.id}
                         id={item.id}
                         number={index < 9 ? `0${++index}` : ++index}
-                        cover={item.album.cover_small}
+                        cover={item.album.cover_medium}
                         name={item.title}
                         band={item.artist.name}
                         duration={item.duration}

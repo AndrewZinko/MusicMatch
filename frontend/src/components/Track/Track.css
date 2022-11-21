@@ -20,6 +20,7 @@
 .track_cover{
     margin-left: 10px;
     border-radius: 10px;
+    width: 56px;
 }
 
 .track_initials {
@@ -66,16 +67,41 @@
     transition: 0.3s;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 425px) {
+    .track_number {
+        width: 20px;
+        font-size: 12pt;
+    }
+    
+    .track_cover {
+        width: 50px;
+    }
+    
     .track_initials {
-        width: 100px;
+        overflow: hidden;
+        max-width: 110px;
+    }
+
+    .track_name {
+        font-size: 9.5pt;
+    }
+
+    .track_band {
+        font-size: 8.5pt;
     }
 
     .track_time-play__duration {
         width: 50px;
+        font-size: 12pt;
     }
 
     .track_time-play > .JoyChip-root {
         margin-right: 0px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .track_initials {
+        max-width: 70px !important;
     }
 }

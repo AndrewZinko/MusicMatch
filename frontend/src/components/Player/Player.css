@@ -12,7 +12,7 @@
     border-radius: 20px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -111,4 +111,34 @@
 .player_input-range::-ms-fill-upper:focus::-ms-fill-lower,
 .player_input-range:focus::-ms-fill-upper {
     background: #fff;
+}
+
+@media screen and (max-width: 320px) {
+    .player_wrapper {
+        width: 95vw;
+        padding: 8px 10px;
+    }
+
+    .player_container .track_cover {
+        width: 40px;
+    }
+
+    .player_input-range {
+        margin: 0 5px;
+    }
+}
+
+@media screen and ((min-width: 320px) and (max-width: 425px)) {
+    .player_container .track_name {
+        min-width: 80px;
+        font-size: 8.5pt;
+    }
+
+    .player_container .track_band {
+        font-size: 7.5pt;
+    }
+
+    .player_input-range {
+        margin: 0 10px;
+    }
 }

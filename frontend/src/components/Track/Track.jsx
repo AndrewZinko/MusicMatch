@@ -1,5 +1,4 @@
 import { usePlayer } from '../../hooks/player.hook';
-import { useSelector } from 'react-redux';
 
 import IconButton from '@mui/joy/IconButton';
 import Chip from '@mui/joy/Chip';
@@ -10,8 +9,8 @@ const Track = ({id, number, cover, name, band, duration}) => {
     const {activatePlayer, togglePlayPause} = usePlayer();
 
     const handleTrack = () => {
-        const playingNow = true;
-        togglePlayPause(playingNow);
+        const isPlayingNow = true;
+        togglePlayPause(isPlayingNow);
         activatePlayer(id, cover, name, band, duration);
     } 
 
@@ -32,8 +31,8 @@ const Track = ({id, number, cover, name, band, duration}) => {
                 <img className="track_cover" src={cover} alt="Track Cover" />
                 
                 <div className="track_initials">
-                    <p className="track_name">{name}</p>
-                    <p className="track_band">{band}</p>
+                    <p className="track_name">{name.length > 30 ? `${name.slice(0, 30)}...` : name}</p>
+                    <p className="track_band">{band.length > 30 ? `${band.slice(0, 30)}...` : band}</p>
                 </div>
             </div>
 

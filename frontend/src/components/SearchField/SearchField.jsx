@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { fetchMusic } from "../../reducers/music";
 import { useNavigate } from "react-router-dom";
 import { musicAddQuery } from "../../reducers/music";
 
@@ -19,7 +18,7 @@ const SearchField = () => {
     const onSubmit = (data) => {
         setValue("band", "");
         dispatch(musicAddQuery(data.band));
-        dispatch(fetchMusic(data));
+        localStorage.setItem("band", data.band);
         navigate("/search");
     };
 
