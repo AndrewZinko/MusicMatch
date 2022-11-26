@@ -6,11 +6,9 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import "./Track.css";
 
 const Track = ({id, number, cover, name, band, duration}) => {
-    const {activatePlayer, togglePlayPause} = usePlayer();
+    const {activatePlayer} = usePlayer();
 
     const handleTrack = () => {
-        const isPlayingNow = true;
-        togglePlayPause(isPlayingNow);
         activatePlayer(id, cover, name, band, duration);
     } 
 
@@ -27,7 +25,7 @@ const Track = ({id, number, cover, name, band, duration}) => {
     return (
         <div className='track_wrapper'>
             <div className="track_info">
-                <span className='track_number'>{number}</span>
+                <Chip className="track_number" variant="plain" size="sm">{number}</Chip>
                 <img className="track_cover" src={cover} alt="Track Cover" />
                 
                 <div className="track_initials">
@@ -40,8 +38,7 @@ const Track = ({id, number, cover, name, band, duration}) => {
                 <Chip className="track_time-play__duration" variant="plain" size="sm">
                     {renderTrackDuration(duration)}
                 </Chip>
-                <IconButton className="track_time-play_iconbutton" 
-                    onClick={() => handleTrack()}>
+                <IconButton className="track_time-play_iconbutton" onClick={handleTrack}>
                     <PlayArrowIcon style={{"fill": "#211f27"}}/>
                 </IconButton>
             </div>

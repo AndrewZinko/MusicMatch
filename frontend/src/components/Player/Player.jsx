@@ -26,21 +26,34 @@ const Player = () => {
 
     useEffect(() => {
         if (trackData?.band && trackData?.name) {
+            pauseCurrentTrack();
+
             progressBar.current.max = Math.floor(trackData.duration);
+            progressBar.current.value = 0;
 
-            if ('mediaSession' in navigator) {
-                navigator.mediaSession.metadata = new MediaMetadata({
-                    title: trackData.name,
-                    artist: trackData.band,
-                    artwork: [
-                        {src: trackData.cover, sizes: "250x250", type: "image/jpeg"}
-                    ]
-                });
-            }
-
+            prepareMediaSession(trackData);
             fetchTrackUrl(trackData?.band, trackData?.name);
         }
     }, [trackData?.id]);
+
+    const pauseCurrentTrack = () => {
+        if (audioPlayer?.current && playStatus) {
+            audioPlayer.current.pause();
+            togglePlayPause(playStatus);
+        }
+    }
+
+    const prepareMediaSession = (trackData) => {
+        if (navigator?.mediaSession) {
+            navigator.mediaSession.metadata = new MediaMetadata({
+                title: trackData.name,
+                artist: trackData.band,
+                artwork: [
+                    {src: trackData.cover, sizes: "250x250", type: "image/jpeg"}
+                ]
+            });
+        }
+    }
 
     const onPlayPauseClick = async () => {
         const prevValue = playStatus;
